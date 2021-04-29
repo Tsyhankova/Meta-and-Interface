@@ -7,36 +7,39 @@ class SerializationInterface(ABC):
 
     @abstractmethod
     def serialization_to_bin(self, some_data):
-        data = pickle.dumps(some_data)
-        return data
+        file_name = 'data.bin'
+        with open(file_name, "wb") as fh:
+            pickle.dump(some_data, fh)
 
     @abstractmethod
     def serialization_to_json(self, some_data):
-        data = json.dumps(some_data)
-        return data
+        file_name = 'data.json'
+        with open(file_name, "w") as fh:
+            json.dump(some_data, fh)
 
 class ListSerialization(SerializationInterface):
     
     def serialization_to_bin(self, some_data):
-        data = pickle.dumps(some_data)
-        return data
+        file_name = 'data.bin'
+        with open(file_name, "wb") as fh:
+            pickle.dump(some_data, fh)
 
     def serialization_to_json(self, some_data):
-        data = json.dumps(some_data)
-        return data
+        file_name = 'data.json'
+        with open(file_name, "w") as fh:
+            json.dump(some_data, fh)
 
 
-if __name__ == "__main__":
-    main()
+
     
 
 
-"""
+
 some_data = "sghjxj"
 a = ListSerialization()
-print(a.serialization_to_bin(some_data))
-print(a.serialization_to_json(some_data))
-"""
+a.serialization_to_bin(some_data)
+a.serialization_to_json(some_data)
+
 
 
 
